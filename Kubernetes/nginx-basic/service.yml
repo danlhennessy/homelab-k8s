@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: nginxlabel
-  type: NodePort
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 8083
