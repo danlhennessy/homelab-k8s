@@ -2,14 +2,19 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: my-ingress
+  labels:
+    app: nginxlabel
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  ingressClassName: contour
   rules:
     - http:
         paths:
           - path: /nginx
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: nginx-service
                 port:
-                  number: 8083
+                  number: 80
