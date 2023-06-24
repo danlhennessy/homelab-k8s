@@ -11,7 +11,7 @@ spec:
       node.store.allow_mmap: false
     volumeClaimTemplates:
     - metadata:
-        name: data
+        name: elasticsearch-data
       spec:
         accessModes:
           - ReadWriteOnce
