@@ -15,7 +15,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: manual
+        storageClassName: managed-nfs-storage
         resources:
           requests:
             storage: 2Gi
