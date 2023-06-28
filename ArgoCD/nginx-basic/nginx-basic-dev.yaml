@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-basic-dev
+spec:
+  destination:
+    name: ''
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: Kubernetes/nginx-basic/dev
+    repoURL: 'https://github.com/danlhennessy/homelab-k8s'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  hooks:
+    - name: trivy-vulnerability-scan
+      hookType: postSync
+      executeHook:
+        container:
+          image: aquasec/trivy:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              trivy k8s --report=summary all > /home/dan/homelab/trivy/trivy_scan_results.txt
