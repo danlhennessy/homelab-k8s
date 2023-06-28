@@ -6,7 +6,6 @@ metadata:
     workflows.argoproj.io/archive-strategy: "false"
 spec:
   entrypoint: silly
-  serviceAccountName: workflow
   templates:
   - name: silly
     container:

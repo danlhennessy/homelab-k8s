@@ -6,7 +6,6 @@ metadata:
     workflows.argoproj.io/archive-strategy: "false"
 spec:
   entrypoint: full
-  serviceAccountName: workflow
   volumes:
   - name: kaniko-secret
     secret:
