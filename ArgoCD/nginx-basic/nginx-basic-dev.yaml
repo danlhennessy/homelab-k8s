@@ -13,14 +13,3 @@ spec:
     targetRevision: HEAD
   sources: []
   project: default
-  hooks:
-    - name: trivy-vulnerability-scan
-      hookType: postSync
-      executeHook:
-        container:
-          image: aquasec/trivy:latest
-          command:
-            - /bin/sh
-            - -c
-            - |
-              trivy k8s --report=summary all > /home/dan/homelab/trivy/trivy_scan_results.txt
