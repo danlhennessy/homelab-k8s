@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: kubectl-get-pods-
+  namespace: argo
+spec:
+  serviceAccountName: argo-admin
+  entrypoint: kubectl-get-pods
+  templates:
+    - name: kubectl-get-pods
+      steps:
+        - - name: get-pods-default
+            template: get-pods
+            arguments:
+              parameters:
+                - name: namespace
+                  value: default
+        - - name: get-pods-argo
+            template: get-pods
+            arguments:
+              parameters:
+                - name: namespace
+                  value: argo
+    - name: get-pods
+      inputs:
+        parameters:
+          - name: namespace
+      container:
+        image: bitnami/kubectl:latest
+        command: [kubectl]
+        args: [get, pods, "-n", "{{inputs.parameters.namespace}}"]
