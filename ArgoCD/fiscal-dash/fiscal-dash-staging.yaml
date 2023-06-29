@@ -10,7 +10,7 @@ spec:
   source:
     path: kubernetes/app/prd
     repoURL: 'https://github.com/danlhennessy/fiscal-dash'
-    targetRevision: HEAD
+    targetRevision: master
   sources: []
   project: default
   syncPolicy:
