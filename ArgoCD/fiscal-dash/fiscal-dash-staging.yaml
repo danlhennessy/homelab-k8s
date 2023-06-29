@@ -5,12 +5,12 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: fiscal-ns-dev
+    namespace: fiscal-ns
     server: 'https://kubernetes.default.svc'
   source:
-    path: kubernetes/app/dev
+    path: kubernetes/app/prd
     repoURL: 'https://github.com/danlhennessy/fiscal-dash'
-    targetRevision: development
+    targetRevision: HEAD
   sources: []
   project: default
   syncPolicy:

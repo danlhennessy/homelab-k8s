@@ -28,3 +28,5 @@ Kubernetes/manifests/MySQL/__pycache__/mysql.cpython-310.pyc
 .gitignore
 Kubernetes/manifests/nfs-server/config.md
 Kubernetes/manifests/MySQL/config.md
+Kubernetes/manifests/ingress-controller/contour/setup.md
+Kubernetes/manifests/ingress-controller/http-ingress/config.md
