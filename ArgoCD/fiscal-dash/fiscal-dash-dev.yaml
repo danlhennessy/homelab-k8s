@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fiscal-dash
+spec:
+  destination:
+    name: ''
+    namespace: fiscal-ns
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: Kubernetes/manifests/fiscal-dash
+    repoURL: 'https://github.com/danlhennessy/homelab-k8s'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

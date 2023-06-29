@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+  labels:
+    component: backend
+    instance: app
+    name: fiscal-dash
+  namespace: fiscal-ns
+spec:
+  selector:
+    component: backend
+    instance: app
+    name: fiscal-dash
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      name: http
+      port: 5000
+      targetPort: webapp

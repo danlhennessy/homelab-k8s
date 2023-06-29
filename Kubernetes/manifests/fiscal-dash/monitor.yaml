@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: fiscal-monitor
+  labels:
+    component: backend
+    instance: app
+    name: fiscal-dash
+    release: kube-prometheus-stack # Prometheus release name
+  namespace: monitoring # Namespace of Prometheus
+spec:
+  namespaceSelector:
+    matchNames:
+    - fiscal-ns
+  selector:
+    matchLabels:
+      component: backend
+      instance: app
+      name: fiscal-dash
+  endpoints:
+  - port: http # Port name from service
+    path: /metrics
