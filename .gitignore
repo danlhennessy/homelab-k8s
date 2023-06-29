@@ -17,3 +17,14 @@ Argo-Workflows/setup.md
 kubeconfig.yaml
 config
 Kubernetes/service-accounts/config.md
+Kubernetes/manifests/ECK/setup.md
+Kubernetes/manifests/http-ingress/config.md
+Kubernetes/manifests/monitoring/setup.md
+Kubernetes/manifests/contour/setup.md
+Kubernetes/manifests/dashboard/setup.md
+.gitignore
+Kubernetes/manifests/MySQL/tester.py
+Kubernetes/manifests/MySQL/__pycache__/mysql.cpython-310.pyc
+.gitignore
+Kubernetes/manifests/nfs-server/config.md
+Kubernetes/manifests/MySQL/config.md
