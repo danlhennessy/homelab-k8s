@@ -30,3 +30,8 @@ Kubernetes/manifests/nfs-server/config.md
 Kubernetes/manifests/MySQL/config.md
 Kubernetes/manifests/ingress-controller/contour/setup.md
 Kubernetes/manifests/ingress-controller/http-ingress/config.md
+Kubernetes/dns/config.md
+Kubernetes/dns/setup.md
+Kubernetes/dns/bind9/setup.md
+Kubernetes/dns/bind9/named.conf
+Kubernetes/dns/bind9/homelab-k8s.com.zone
