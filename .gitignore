@@ -35,3 +35,6 @@ Kubernetes/dns/setup.md
 Kubernetes/dns/bind9/setup.md
 Kubernetes/dns/bind9/named.conf
 Kubernetes/dns/bind9/homelab-k8s.com.zone
+Kubernetes/dns/ingress-controller/http-ingress/config.md
+Kubernetes/dns/ingress-controller/contour/setup.md
+Kubernetes/dns/ingress-controller/ingress-nginx/setup.md
