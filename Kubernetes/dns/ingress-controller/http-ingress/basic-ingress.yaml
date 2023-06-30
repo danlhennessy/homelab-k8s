@@ -11,7 +11,7 @@ spec:
   - host: i.homelab.me
     http:
       paths:
-      - path: /demo
+      - path: /
         pathType: Prefix
         backend:
           service:
