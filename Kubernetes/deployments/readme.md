@@ -1,20 +1,19 @@
-# Deployment options
+# Deployment Stages
 
-Application repos with their own app CI/CD , ending in a new image being pushed to a container registry
+1. Application repos with their own app CI/CD , ending in a new image being pushed to a container registry
 
-Dev, Staging and Prod Namespaces
+   - Sandbox docker setup for quick tests
 
-How to separate dev/stg/prd manifests
-    put app manifests in app repo
-    In branches so that dont need PRs to test. Dev branch that argo monitors for dev deployments
-    Prd branch for staging and prod deployments
+2. dev app manifests in repo dev branch. Prod/Staging app manifests in repo master branch. Test on dev branch , until ready to PR and merge dev into master.
+
+3. ArgoCD monitors repos and when app manifests are updated, it will sync the relevant namespace/cluster: Dev, Staging and Prod Namespaces
+   Argo Workflows triggered as a result of ArgoCD syncs - PreSync / Sync / PostSync / SyncFailed Hooks. Workflows runs specific and general checks
+
+4. After merge to master - staging will build automatically, run tests/scans and send alerts using argo workflows.
+
+5. Optional deploy to prod at this point - argo rollouts for blue/green deployment / canary deployment?
+
 
 # Choices
 
-When to build dev cluster (automatic or not, after app CI/CD or before):
-    Optional build at end of CI/CD (Can choose to build at any time during pipeline)
-    Also have a docker sandbox for quick non deployment tests
-When to build stg cluster (automatic or not, after app CI/CD or before):
-    After app CI/CD
-    Not automatically
-    Stg cluster mirrors prod except for scaling and comes from master branch
+

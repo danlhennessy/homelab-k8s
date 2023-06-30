@@ -8,7 +8,7 @@ spec:
     namespace: default
     server: 'https://kubernetes.default.svc'
   source:
-    path: Kubernetes/nginx-basic/staging
+    path: Kubernetes/manifests/nginx-basic/staging
     repoURL: 'https://github.com/danlhennessy/homelab-k8s'
     targetRevision: HEAD
   sources: []
