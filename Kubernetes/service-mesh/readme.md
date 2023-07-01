@@ -4,8 +4,8 @@ Working Istio metrics + visualisations:
 - Deploy app and make sure Istio sidecar is running
 - Check Kiali graphs for traffic / metrics
 # Label namespaces
-kubectl create ns fiscal-dash-staging
-kubectl label namespace fiscal-dash-staging istio-injection=enabled
+kubectl create ns nginx-staging
+kubectl label namespace nginx-staging istio-injection=enabled
 
 # Helm
 helm repo add istio https://istio-release.storage.googleapis.com/charts
