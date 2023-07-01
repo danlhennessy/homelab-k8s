@@ -15,4 +15,10 @@ spec:
       containers:
       - name: ubuntu
         image: ubuntu:latest
-        command: ["/bin/sleep", "infinity"]
+        command:
+          - "/bin/bash"
+          - "-c"
+          - |
+            apt update
+            apt install -y dnsutils
+            /bin/sleep infinity

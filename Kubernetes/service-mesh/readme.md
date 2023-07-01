@@ -3,6 +3,7 @@ istioctl install --set profile=demo -y
 
 kubectl label namespace default istio-injection=enabled
 kubectl label namespace fiscal-ns istio-injection=enabled
+kubectl label namespace monitoring istio-injection=enabled
 
 - Deploy a pod with a service to default namespace and an Istio sidecar pod will be deployed along with it
 
