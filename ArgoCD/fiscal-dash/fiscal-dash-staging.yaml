@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fiscal-dash
+  name: fiscal-dash-staging
 spec:
   destination:
     name: ''
-    namespace: fiscal-ns
+    namespace: fiscal-ns-staging
     server: 'https://kubernetes.default.svc'
   source:
     path: kubernetes/app/prd

@@ -31,7 +31,6 @@ spec:
               number: 5000
     - route:
       - destination:
-          host: webapp.fiscal-ns.svc.cluster.local
+          host: nginx-service.default.svc.cluster.local
           port:
-            number: 5000
-      
+            number: 8083

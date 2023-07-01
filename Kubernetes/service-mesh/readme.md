@@ -1,44 +1,34 @@
-# Istio
-istioctl install --set profile=demo -y
-
-kubectl label namespace default istio-injection=enabled
-kubectl label namespace fiscal-ns istio-injection=enabled
-kubectl label namespace monitoring istio-injection=enabled
-
-- Deploy a pod with a service to default namespace and an Istio sidecar pod will be deployed along with it
-
-Teardown: 
-kubectl delete -f samples/addons
-istioctl uninstall -y --purge
-kubectl delete namespace istio-system
-kubectl label namespace default istio-injection-
-
-# Kiali
-<!-- helm install \
-  --namespace istio-system \
-  --set auth.strategy="anonymous" \
-  --repo https://kiali.org/helm-charts \
-  -f kiali-values.yaml \
-  kiali-server \
-  kiali-server -->
-
-helm install \
-  --namespace istio-system \
-  --set auth.strategy="anonymous" \
-  --repo https://kiali.org/helm-charts \
-  kiali-server \
-  kiali-server
-
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
-
-istioctl dashboard kiali
-
 Working Istio metrics + visualisations:
-- Install Istio, Kiali and Prometheus addon as above
+- Install Istio, Kiali and Prometheus addon as below
 - Label namespace with istio-injection=enabled
 - Deploy app and make sure Istio sidecar is running
 - Check Kiali graphs for traffic / metrics
-# Teardown
+# Label namespaces
+kubectl create ns fiscal-dash-staging
+kubectl label namespace fiscal-dash-staging istio-injection=enabled
+
+# Helm
+helm repo add istio https://istio-release.storage.googleapis.com/charts
+helm repo update
+
+helm install istio-base istio/base -n istio-system --create-namespace --set defaultRevision=default
+helm install istiod istio/istiod -n istio-system -f sidecar-exempt.yaml
+
+helm install istio-ingress istio/gateway -n istio-ingress --create-namespace
+
+helm install --namespace istio-system --set auth.strategy="anonymous" --repo https://kiali.org/helm-charts kiali-server kiali-server
+
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
+kubectl apply -f gateway.yaml
+kubectl apply -f virtualsvc.yaml
+
+# Helm Teardown
+
+helm delete istio-ingress -n istio-ingress
+kubectl delete namespace istio-ingress
+helm delete istiod -n istio-system
+helm delete istio-base -n istio-system
+kubectl delete namespace istio-system
 
 helm uninstall --namespace istio-system kiali-server
 kubectl delete -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
