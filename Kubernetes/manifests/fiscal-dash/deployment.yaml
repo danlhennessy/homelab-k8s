@@ -6,6 +6,7 @@ metadata:
     component: backend
     instance: app
     name: fiscal-dash
+    app: fiscal-dash
   namespace: fiscal-ns
 spec:
   replicas: 1
@@ -14,16 +15,18 @@ spec:
       component: backend
       instance: app
       name: fiscal-dash
+      app: fiscal-dash
   template:
     metadata:
       labels:
         component: backend
         instance: app
         name: fiscal-dash
+        app: fiscal-dash
     spec:
       containers:
       - name: fiscal-dash
-        image: danlh/fiscal-dash:latest
+        image: danlh/fiscal-dash:20230630230555
         ports:
         - containerPort: 5000
           name: webapp

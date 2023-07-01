@@ -6,12 +6,14 @@ metadata:
     component: backend
     instance: app
     name: fiscal-dash
+    app: fiscal-dash
   namespace: fiscal-ns
 spec:
   selector:
     component: backend
     instance: app
     name: fiscal-dash
+    app: fiscal-dash
   type: LoadBalancer
   ports:
     - protocol: TCP
