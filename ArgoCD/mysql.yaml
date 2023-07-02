@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-workflows
+  name: mysql
 spec:
   destination:
     name: ''
     namespace: default
     server: 'https://kubernetes.default.svc'
   source:
-    path: Argo-Workflows
+    path: Kubernetes/manifests/MySQL
     repoURL: 'https://github.com/danlhennessy/homelab-k8s'
     targetRevision: HEAD
   sources: []
