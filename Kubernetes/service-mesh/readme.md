@@ -1,3 +1,5 @@
+
+istioctl install --set profile=demo -y
 Working Istio metrics + visualisations:
 - Install Istio, Kiali and Prometheus addon as below
 - Label namespace with istio-injection=enabled
@@ -12,11 +14,12 @@ helm repo add istio https://istio-release.storage.googleapis.com/charts
 helm repo update
 
 helm install istio-base istio/base -n istio-system --create-namespace --set defaultRevision=default
-helm install istiod istio/istiod -n istio-system -f sidecar-exempt.yaml
+helm install istiod istio/istiod -n istio-system -f values/sidecar-exempt.yaml
 
 helm install istio-ingress istio/gateway -n istio-ingress --create-namespace
 
 helm install --namespace istio-system --set auth.strategy="anonymous" --repo https://kiali.org/helm-charts kiali-server kiali-server
+istioctl dashboard kiali
 
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
 kubectl apply -f gateway.yaml

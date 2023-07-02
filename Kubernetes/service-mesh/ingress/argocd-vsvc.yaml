@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: argocd-virtual
+spec:
+  hosts:
+    - "argo.homelab.me"
+  gateways:
+    - my-gateway
+  http:
+    - route:
+      - destination:
+          host: argocd-server.argocd.svc.cluster.local
+          port:
+            number: 80
