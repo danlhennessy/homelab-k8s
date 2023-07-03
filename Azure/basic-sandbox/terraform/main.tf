@@ -2,19 +2,11 @@ provider "azurerm" {
   features {}
 }
 
-variable "client_id" {
-  description = "Service Principal ID"
-}
-variable "client_secret" {
-  description = "Service Principal secret"
-}
-variable "create_aks_cluster" {
-  type    = bool
-  default = true
-}
+resource "random_pet" "prefix" {}
 
 data "azurerm_resource_group" "existing" {
-  name     = "AKSsandbox"
+  name     = "${random_pet.prefix.id}-rg"
+
 }
 
 resource "azurerm_kubernetes_cluster" "sandbox" {
@@ -28,7 +20,7 @@ resource "azurerm_kubernetes_cluster" "sandbox" {
     name                = "default"
     vm_size             = "Standard_B2s"
     os_disk_size_gb     = 30
-    node_count          = 1
+    node_count          = 2
     enable_auto_scaling = false
   }
 

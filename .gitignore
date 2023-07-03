@@ -45,3 +45,13 @@ Azure/terraform/.terraform/providers/registry.terraform.io/hashicorp/azurerm/3.6
 Azure/terraform/.terraform.tfstate.lock.info
 Azure/setup.md
 Azure/cluster/jumpbox.md
+Azure/rancher/setup.md
+Azure/rancher/config.yaml
+Azure/cluster/aks-baseline.md
+Azure/basic-sandbox/terraform/config.md
+Azure/basic-sandbox/terraform/.terraform.lock.hcl
+Azure/basic-sandbox/terraform/terraform.tfstate
+Azure/basic-sandbox/terraform/.terraform/providers/registry.terraform.io/hashicorp/azurerm/3.63.0/linux_amd64/terraform-provider-azurerm_v3.63.0_x5
+Azure/cluster/tls-cert.md
+Azure/basic-sandbox/terraform/terraform.tfvars
+Azure/basic-sandbox/terraform/.terraform/providers/registry.terraform.io/hashicorp/random/3.5.1/linux_amd64/terraform-provider-random_v3.5.1_x5
