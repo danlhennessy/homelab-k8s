@@ -55,3 +55,5 @@ Azure/basic-sandbox/terraform/.terraform/providers/registry.terraform.io/hashico
 Azure/cluster/tls-cert.md
 Azure/basic-sandbox/terraform/terraform.tfvars
 Azure/basic-sandbox/terraform/.terraform/providers/registry.terraform.io/hashicorp/random/3.5.1/linux_amd64/terraform-provider-random_v3.5.1_x5
+Azure/basic-sandbox/terraform/terraform.tfstate.backup
+Azure/basic-sandbox/terraform/.terraform.tfstate.lock.info
