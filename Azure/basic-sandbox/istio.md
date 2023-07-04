@@ -1,5 +1,8 @@
+# Mesh addon
 az aks mesh enable --resource-group 101-sandbox-lx74e17l --name sandboxcluster
 az aks show --resource-group 101-sandbox-lx74e17l --name sandboxcluster  --query 'serviceMeshProfile.mode'
+
+az aks mesh disable --resource-group 101-sandbox-lx74e17l --name sandboxcluster
 
 # AKS Labelling
 kubectl label namespace default istio.io/rev=asm-1-17
@@ -9,6 +12,8 @@ kubectl label namespace default istio.io/rev=asm-1-17
 az aks mesh enable-ingress-gateway --resource-group 101-sandbox-lx74e17l --name sandboxcluster --ingress-gateway-type external
 
 az aks mesh enable-ingress-gateway --resource-group 101-sandbox-lx74e17l --name sandboxcluster --ingress-gateway-type internal
+
+az aks show --resource-group --resource-group 101-sandbox-lx74e17l --name sandboxcluster --query provisioningState
 
 az aks mesh disable-ingress-gateway --resource-group 101-sandbox-lx74e17l --name sandboxcluster  --ingress-gateway-type external
 
