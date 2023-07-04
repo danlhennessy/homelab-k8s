@@ -1,5 +1,3 @@
-
-istioctl install --set profile=demo -y
 Working Istio metrics + visualisations:
 - Install Istio, Kiali and Prometheus addon as below
 - Label namespace with istio-injection=enabled
@@ -9,6 +7,17 @@ Working Istio metrics + visualisations:
 kubectl create ns nginx-staging
 kubectl label namespace nginx-staging istio-injection=enabled
 
+# Istioctl - https://istio.io/v1.6/docs/setup/install/istioctl/
+
+`istioctl install -f values/ststicip.yaml` (static private IP 10.96.0.4)
+helm install --namespace istio-system --set auth.strategy="anonymous" --repo https://kiali.org/helm-charts kiali-server kiali-server
+
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
+kubectl apply -f ingress/gateway.yaml
+kubectl apply -f ingress/virtualsvc.yaml
+
+Teardown: `istioctl uninstall --purge -y`
+
 # Helm
 helm repo add istio https://istio-release.storage.googleapis.com/charts
 helm repo update
@@ -16,14 +25,15 @@ helm repo update
 helm install istio-base istio/base -n istio-system --create-namespace --set defaultRevision=default
 helm install istiod istio/istiod -n istio-system -f values/sidecar-exempt.yaml
 
-helm install istio-ingress istio/gateway -n istio-ingress --create-namespace
+helm install istio-ingress istio/gateway -n istio-ingress --create-namespace -f istio-ingressgateway.yaml
+helm install istio-ingress istio/gateway -n istio-system --set gateways.istio-ingressgateway.loadBalancerIP=1.4.3.5
 
 helm install --namespace istio-system --set auth.strategy="anonymous" --repo https://kiali.org/helm-charts kiali-server kiali-server
 istioctl dashboard kiali
 
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
-kubectl apply -f gateway.yaml
-kubectl apply -f virtualsvc.yaml
+kubectl apply -f ingress/gateway.yaml
+kubectl apply -f ingress/virtualsvc.yaml
 
 # Helm Teardown
 

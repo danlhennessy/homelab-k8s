@@ -44,19 +44,6 @@ resource "azurerm_public_ip" "appgw-public-ip" {
   sku                 = "Standard"
 }
 
-resource "azurerm_lb" "internal" {
-  name                = "aks-internal-lb"
-  resource_group_name = azurerm_resource_group.existing.name
-  location            = azurerm_resource_group.existing.location
-  sku                 = "Standard"
-  frontend_ip_configuration {
-    name                          = "internal-lb-fip"
-    subnet_id                     = azurerm_subnet.aks-subnet.id
-    private_ip_address_allocation = "Static"
-    private_ip_address            = "10.0.1.4"
-  }
-}
-
 
 resource "azurerm_application_gateway" "main" {
   name                = "myAppGateway"
@@ -86,7 +73,7 @@ resource "azurerm_application_gateway" "main" {
 
   backend_address_pool {
     name = "myBackendPool"
-    fqdns   = [azurerm_lb.internal.private_ip_address]
+    fqdns   = ["10.96.0.4"]
   }
 
   backend_http_settings {
@@ -111,6 +98,36 @@ resource "azurerm_application_gateway" "main" {
     backend_address_pool_name  = var.backend_address_pool_name
     backend_http_settings_name = var.http_setting_name
     priority                   = 1
+  }
+  waf_configuration = {
+    firewall_mode            = "Detection"
+    rule_set_version         = "3.1"
+    file_upload_limit_mb     = 100
+    max_request_body_size_kb = 128
+
+    disabled_rule_group = [
+      {
+        rule_group_name = "REQUEST-930-APPLICATION-ATTACK-LFI"
+        rules           = ["930100", "930110"]
+      },
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rules           = ["920160"]
+      }
+    ]
+
+    exclusion = [
+      {
+        match_variable          = "RequestCookieNames"
+        selector                = "SomeCookie"
+        selector_match_operator = "Equals"
+      },
+      {
+        match_variable          = "RequestHeaderNames"
+        selector                = "referer"
+        selector_match_operator = "Equals"
+      }
+    ]
   }
 }
 
