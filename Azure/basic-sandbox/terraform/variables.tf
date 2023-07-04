@@ -32,3 +32,9 @@ variable "listener_name" {
 variable "request_routing_rule_name" {
     default = "myRoutingRule"
 }
+
+variable "temporary_name_for_rotation" {
+  type        = string
+  default     = null
+  description = "(Optional) Specifies the name of the temporary node pool used to cycle the default node pool for VM resizing. the `var.agents_size` is no longer ForceNew and can be resized by specifying `temporary_name_for_rotation`"
+}

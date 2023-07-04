@@ -51,8 +51,8 @@ resource "azurerm_application_gateway" "main" {
   location            = azurerm_resource_group.existing.location
 
   sku {
-    name     = "Standard_v2"
-    tier     = "Standard_v2"
+    name     = "WAF_v2"
+    tier     = "WAF_v2"
     capacity = 1
   }
 
@@ -99,35 +99,13 @@ resource "azurerm_application_gateway" "main" {
     backend_http_settings_name = var.http_setting_name
     priority                   = 1
   }
-  waf_configuration = {
+
+  waf_configuration {
+    enabled = true
     firewall_mode            = "Detection"
     rule_set_version         = "3.1"
     file_upload_limit_mb     = 100
     max_request_body_size_kb = 128
-
-    disabled_rule_group = [
-      {
-        rule_group_name = "REQUEST-930-APPLICATION-ATTACK-LFI"
-        rules           = ["930100", "930110"]
-      },
-      {
-        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
-        rules           = ["920160"]
-      }
-    ]
-
-    exclusion = [
-      {
-        match_variable          = "RequestCookieNames"
-        selector                = "SomeCookie"
-        selector_match_operator = "Equals"
-      },
-      {
-        match_variable          = "RequestHeaderNames"
-        selector                = "referer"
-        selector_match_operator = "Equals"
-      }
-    ]
   }
 }
 
@@ -142,12 +120,15 @@ resource "azurerm_kubernetes_cluster" "sandboxcluster" {
 
   default_node_pool {
     name                = "default"
-    vm_size             = "Standard_B2s"
+    vm_size             = "Standard_B2ms"
     os_disk_size_gb     = 30
     node_count          = 2
     enable_auto_scaling = false
     vnet_subnet_id = azurerm_subnet.aks-subnet.id
+    temporary_name_for_rotation  = var.temporary_name_for_rotation
   }
+
+  
 
   service_principal {
     client_id     = var.client_id
@@ -157,8 +138,12 @@ resource "azurerm_kubernetes_cluster" "sandboxcluster" {
   network_profile {
     network_plugin = "kubenet"
 
-    service_cidr     = "10.1.0.0/16"
-    dns_service_ip   = "10.1.0.10"
+    service_cidr     = "10.96.0.0/16"
+    dns_service_ip   = "10.96.0.10"
+  }
+
+  service_mesh_profile {
+    mode = "Istio"
   }
 
   tags = {

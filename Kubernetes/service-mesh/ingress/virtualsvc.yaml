@@ -4,7 +4,7 @@ metadata:
   name: my-virtual-service
 spec:
   hosts:
-    - "gateway.homelab.me"
+    - "*"
   gateways:
     - my-gateway
   http:

@@ -9,7 +9,7 @@ kubectl label namespace nginx-staging istio-injection=enabled
 
 # Istioctl - https://istio.io/v1.6/docs/setup/install/istioctl/
 
-`istioctl install -f values/ststicip.yaml` (static private IP 10.96.0.4)
+`istioctl install -f values/staticip.yaml` (static private IP 10.96.0.4)
 helm install --namespace istio-system --set auth.strategy="anonymous" --repo https://kiali.org/helm-charts kiali-server kiali-server
 
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
