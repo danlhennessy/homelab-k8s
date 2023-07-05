@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: https-gateway
+spec:
+  selector:
+    istio: ingressgateway # aks-istio-ingressgateway-external = aks , ingressgateway = istioctl
+  servers:
+    - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: ingress-cert # This should match the Certificate secretName
+    hosts:
+    - k.danlhennessy.com # This should match a DNS name in the Certificate

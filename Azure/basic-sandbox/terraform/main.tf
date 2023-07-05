@@ -42,6 +42,9 @@ resource "azurerm_public_ip" "appgw-public-ip" {
   location            = azurerm_resource_group.existing.location
   allocation_method   = "Static"
   sku                 = "Standard"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 
