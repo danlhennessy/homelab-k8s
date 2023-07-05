@@ -14,4 +14,4 @@ spec:
         mode: SIMPLE
         credentialName: ingress-cert # This should match the Certificate secretName
       hosts:
-      - "*" # k.danlhennessy.com This should match a DNS name in the Certificate
+      - "*" # i.danlhennessy.com This should match a DNS name in the Certificate
