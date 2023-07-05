@@ -12,16 +12,22 @@ kubectl label namespace default istio.io/rev=asm-1-17
 az aks mesh enable-ingress-gateway --resource-group 101-sandbox-343lb0d1 --name sandboxcluster --ingress-gateway-type external
 
 az aks mesh enable-ingress-gateway --resource-group 101-sandbox-343lb0d1 --name sandboxcluster --ingress-gateway-type internal
-
 az aks show --resource-group --resource-group 101-sandbox-343lb0d1 --name sandboxcluster --query provisioningState
+
 
 az aks mesh disable-ingress-gateway --resource-group 101-sandbox-343lb0d1 --name sandboxcluster  --ingress-gateway-type external
 
 
-kubectl apply -f /media/dan/Transcend4/Backup/Work/DevOps/homelab/Kubernetes/manifests/nginx-basic/dev/deployment.yml
-kubectl apply -f /media/dan/Transcend4/Backup/Work/DevOps/homelab/Kubernetes/manifests/nginx-basic/dev/service.yml
+kubectl apply -f /media/dan/Transcend5/Backup/Work/DevOps/homelab/Kubernetes/manifests/nginx-basic/dev/deployment.yml
+kubectl apply -f /media/dan/Transcend5/Backup/Work/DevOps/homelab/Kubernetes/manifests/nginx-basic/dev/service.yml
 
-kubectl apply -f /media/dan/Transcend4/Backup/Work/DevOps/homelab/Kubernetes/service-mesh/ingress/gateway.yaml
-kubectl apply -f /media/dan/Transcend4/Backup/Work/DevOps/homelab/Kubernetes/service-mesh/ingress/virtualsvc.yaml
+kubectl apply -f /media/dan/Transcend5/Backup/Work/DevOps/homelab/Kubernetes/service-mesh/ingress/gateway.yaml
+kubectl apply -f /media/dan/Transcend5/Backup/Work/DevOps/homelab/Kubernetes/service-mesh/ingress/virtualsvc.yaml
+
+kubectl apply -f /media/dan/Transcend5/Backup/Work/DevOps/homelab/Kubernetes/service-mesh/ingress/httpsgateway.yaml -n aks-istio-ingress
+kubectl apply -f /media/dan/Transcend5/Backup/Work/DevOps/homelab/Kubernetes/service-mesh/ingress/https-vs.yaml -n aks-istio-ingress
 
 curl external IP
+
+kubectl delete -f /media/dan/Transcend5/Backup/Work/DevOps/homelab/Kubernetes/manifests/nginx-basic/dev/deployment.yml
+kubectl delete -f /media/dan/Transcend5/Backup/Work/DevOps/homelab/Kubernetes/manifests/nginx-basic/dev/service.yml

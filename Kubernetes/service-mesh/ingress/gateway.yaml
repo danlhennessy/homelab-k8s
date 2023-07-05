@@ -4,7 +4,7 @@ metadata:
   name: my-gateway
 spec:
   selector:
-    istio: ingressgateway # aks-istio-ingressgateway-external = aks , ingressgateway = istioctl
+    istio: aks-istio-ingressgateway-external # aks-istio-ingressgateway-external = aks , ingressgateway = istioctl
   servers:
     - port:
         number: 80
