@@ -58,3 +58,6 @@ Azure/basic-sandbox/terraform/.terraform/providers/registry.terraform.io/hashico
 Azure/basic-sandbox/terraform/terraform.tfstate.backup
 Azure/basic-sandbox/terraform/.terraform.tfstate.lock.info
 Kubernetes/https/setup.md
+Kubernetes/https/certificate.yaml
+Azure/basic-sandbox/terraform/main.tf
+Azure/basic-sandbox/terraform/main-priv.tf
