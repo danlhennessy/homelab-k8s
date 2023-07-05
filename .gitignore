@@ -285,3 +285,4 @@ Kubernetes/https/httpbin/example_certs1
 Kubernetes/https/httpbin/example_certs2
 Azure/kv-test/main.tf
 Kubernetes/https/main-priv.tf
+Azure/basic-sandbox/terraform/terraform.tfstate.1688520937.backup
