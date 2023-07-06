@@ -16,4 +16,6 @@
 
 # Choices
 
+Dev environment docker / okteto
 
+IaC : Terraform / Crossplane
