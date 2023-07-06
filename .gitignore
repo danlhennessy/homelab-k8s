@@ -72,7 +72,8 @@ Azure/kv-test/.terraform/providers/registry.terraform.io/hashicorp/null/3.2.1/li
 Azure/kv-test/.terraform/providers/registry.terraform.io/hashicorp/time/0.9.1/linux_amd64/terraform-provider-time_v0.9.1_x5
 Azure/kv-test/terraform.tfstate
 
-
+*setup.md
+*config.md
 ### Terraform ###
 # Local .terraform directories
 **/.terraform/*
@@ -289,3 +290,6 @@ Azure/basic-sandbox/terraform/terraform.tfstate.1688520937.backup
 Azure/backup/main-priv copy.tf
 Kubernetes/crossplane/setup.md
 Kubernetes/crossplane/azure-credentials.json
+Kubernetes/dns+ingress/bind9/setup.md
+Kubernetes/dns+ingress/ingress-controller/contour/setup.md
+Kubernetes/dns+ingress/setup.md
