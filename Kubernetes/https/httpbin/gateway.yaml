@@ -4,7 +4,7 @@ metadata:
   name: mygateway
 spec:
   selector:
-    istio: aks-istio-ingressgateway-external # use istio default ingress gateway
+    istio: aks-istio-ingressgateway-external # Match pod label for istio=
   servers:
   - port:
       number: 443
