@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: kubectl-get-pods
+  namespace: argo
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  serviceAccountName: argo-admin
+  entrypoint: kubectl-get-pods
+  templates:
+    - name: kubectl-get-pods
+      container:
+        image: bitnami/kubectl:latest
+        command: [kubectl]
+        args: [get, pods, -n, default]
