@@ -3,6 +3,8 @@ kind: Workflow
 metadata:
   name: kubectl-get-pods
   namespace: argo
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 spec:
   serviceAccountName: argo-admin
   entrypoint: kubectl-get-pods
