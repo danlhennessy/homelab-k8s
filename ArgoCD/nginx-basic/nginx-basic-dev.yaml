@@ -13,3 +13,10 @@ spec:
     targetRevision: HEAD
   sources: []
   project: default
+  sync:
+    hooks:
+      - name: run-workflow
+        syncStrategy:
+          manual: {}
+        syncType: PreSync
+        onFailure: Fail
