@@ -10,5 +10,8 @@ Azure AD users + groups -> Kubernetes roles + rolebindings
 Only for services / apps
 
 # Secrets
+Kubernetes secrets
 
 # Environment variables
+Config Maps:
+    data field for utf-8 strings , binaryData for base64-encoded strings
