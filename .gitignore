@@ -293,3 +293,4 @@ Kubernetes/crossplane/azure-credentials.json
 Kubernetes/dns+ingress/bind9/setup.md
 Kubernetes/dns+ingress/ingress-controller/contour/setup.md
 Kubernetes/dns+ingress/setup.md
+ArgoCD/datree.yaml

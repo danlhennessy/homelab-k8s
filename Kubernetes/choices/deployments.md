@@ -8,7 +8,7 @@
 
 3. ArgoCD monitors repos and when app manifests are updated, it will sync the relevant namespace/cluster: Dev, Staging and Prod Namespaces
    Argo Workflows triggered as a result of ArgoCD syncs - PreSync / Sync / PostSync / SyncFailed Hooks. Workflows runs specific and general checks
-   PreSync Datree / OPA Gatekeeper, PostSync Trivy for example
+   PreSync Datree / OPA Gatekeeper, PostSync Trivy / Datree again for example
 
 4. After merge to master - staging will build automatically, run tests/scans and send alerts using argo workflows.
 
