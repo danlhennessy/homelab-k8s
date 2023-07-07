@@ -13,4 +13,4 @@ spec:
       container:
         image: bitnami/kubectl:latest
         command: [kubectl]
-        args: [get, pods, -n, default]
+        args: [gget, pods, -n, default]
