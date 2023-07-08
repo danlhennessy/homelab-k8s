@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-workflows
+  name: argo-rollouts
 spec:
   destination:
     name: ''
-    namespace: default
+    namespace: argo-rollouts
     server: 'https://kubernetes.default.svc'
   source:
     path: Argo-Rollouts
@@ -13,3 +13,6 @@ spec:
     targetRevision: HEAD
   sources: []
   project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
