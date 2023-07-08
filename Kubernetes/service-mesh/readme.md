@@ -17,6 +17,8 @@ kubectl apply -f ingress/gateway.yaml
 kubectl apply -f ingress/virtualsvc.yaml
 
 Teardown: `istioctl uninstall --purge -y`
+helm uninstall --namespace istio-system kiali-server
+kubectl delete -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
 
 # Helm
 helm repo add istio https://istio-release.storage.googleapis.com/charts

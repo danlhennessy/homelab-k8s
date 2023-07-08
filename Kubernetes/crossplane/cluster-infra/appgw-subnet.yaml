@@ -1,0 +1,17 @@
+apiVersion: network.azure.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  labels:
+    aks-cluster-label: ok
+    appgw-subnet: ok
+  name: appgw-subnet
+spec:
+  forProvider:
+    addressPrefixes:
+      - 10.0.2.0/24
+    resourceGroupNameSelector:
+      matchLabels:
+        aks-cluster-label: ok
+    virtualNetworkNameSelector:
+      matchLabels:
+        aks-cluster-label: ok
