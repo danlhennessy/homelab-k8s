@@ -2,7 +2,7 @@
 
 1. Application repos with their own app CI/CD , ending in a new image being pushed to a container registry
 
-   - Sandbox docker setup for quick tests
+   - Sandbox docker + kind setup for quick tests
 
 2. dev app manifests in repo dev branch. Prod/Staging app manifests in repo master branch. Test on dev branch , until ready to PR and merge dev into master.
 
