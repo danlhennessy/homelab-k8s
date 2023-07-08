@@ -5,7 +5,7 @@
 #     branches: [ main ]
     
 # env:
-  # DATREE_TOKEN: ${{ secrets.DATREE_TOKEN }} 
+  # DATREE_TOKEN:  $#{{ secrets.DATREE_TOKEN }} 
 
 # jobs:
 #   k8sPolicyCheck:
