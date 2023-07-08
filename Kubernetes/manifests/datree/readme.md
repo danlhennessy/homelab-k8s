@@ -1,3 +1,5 @@
+Install: See argoCD
+
 Dashboard at https://app.datree.io
 
 Used in Github Actions CI to scan manifests
