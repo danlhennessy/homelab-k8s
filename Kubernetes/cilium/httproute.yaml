@@ -1,0 +1,24 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: http-nginx
+  namespace: nginx-staging
+spec:
+  parentRefs:
+  - name: cil-gateway
+    namespace: nginx-staging
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /a
+    backendRefs:
+    - name: nginx-service
+      port: 8083
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /b
+    backendRefs:
+    - name: apache-service
+      port: 8083
