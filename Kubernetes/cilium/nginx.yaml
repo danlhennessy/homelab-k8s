@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: nginx-deployment
+  namespace: nginx-staging
+  labels:
+    app: nginxlabel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginxlabel
+  template:
+    metadata:
+      labels:
+        app: nginxlabel
+    spec:
+      containers:
+      - name: nginxlabel
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "0.1"
+            memory: "64Mi"
+          requests:
+            cpu: "0.1"
+            memory: "64Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: nginx-staging
+spec:
+  selector:
+    app: nginxlabel
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 80
