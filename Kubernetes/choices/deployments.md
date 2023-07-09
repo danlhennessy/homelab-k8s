@@ -13,4 +13,5 @@
 4. After merge to master - staging will build automatically, run tests/scans and send alerts using argo workflows.
 
 5. Optional deploy to prod at this point - argo rollouts for canary deployment
-   1. Argo Rollouts + Cilium API Gateway https://github.com/argoproj-labs/rollouts-plugin-trafficrouter-gatewayapi/
+   - AKS + Azure CNI with Cilium dataplane, Regular Ingress / Load Balancers + Argo Rollouts
+   - When released for AKS: Argo Rollouts + Cilium API Gateway https://github.com/argoproj-labs/rollouts-plugin-trafficrouter-gatewayapi/
