@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: apache-only-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: netshoot  # Restricts connections for pods matching this label
+  egress:
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns  # Allow kube-dns egress
+      ports:
+        - port: 53
+          protocol: UDP
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              app: apache  # Block all other pod egress except to pods matching this label
