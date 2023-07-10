@@ -2,8 +2,8 @@ AKS + kubenet + Istio + Network policies for pod to pod rules
 
 or
 
-AKS + Azure CNI w/ Cilium
-(Currently no Hubble or gateway API or App gateway ingress)
+AKS + Azure CNI w/ Cilium (Assign IP addresses from Virtual Network not Overlay Network)
+(Currently no Hubble or gateway API)
 
 or 
 
