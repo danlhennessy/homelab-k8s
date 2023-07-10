@@ -3,7 +3,7 @@ AKS + kubenet + Istio + Network policies for pod to pod rules
 or
 
 AKS + Azure CNI w/ Cilium
-(No Hubble currently or gateway API)
+(Currently no Hubble or gateway API or App gateway ingress)
 
 or 
 
