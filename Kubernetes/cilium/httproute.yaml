@@ -11,7 +11,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /a
+        value: /
     backendRefs:
     - name: nginx-service
       port: 8083
