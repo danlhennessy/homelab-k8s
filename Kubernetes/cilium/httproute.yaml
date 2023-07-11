@@ -11,7 +11,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: "/sd"
+        value: /sd
     filters:
       - type: RequestRedirect
         requestRedirect:
