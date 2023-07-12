@@ -10,4 +10,4 @@ roleRef:
 subjects:
 - kind: Group
   namespace: dev
-  name: groupObjectId  # Replace with an Azure group object ID
+  name: XXXXXXXXXXXXXXXXXXXXXXXX  # Replace with an Azure group object ID
