@@ -15,6 +15,8 @@
    - AKS + Azure CNI with Cilium dataplane, Regular Ingress / Load Balancers + Argo Rollouts
    - When released for AKS: Argo Rollouts + Cilium API Gateway https://github.com/argoproj-labs/rollouts-plugin-trafficrouter-gatewayapi/
 
+6. Monitor cluster/apps with post deploy tools. Manual rollback optional - argocd app rollback
+
 # Dev Environment:
 
 Pre image update:
@@ -34,3 +36,4 @@ Pixie: Network flow - DNS requests/TCP drops + retransits, HTTP latency, DB quer
 Falcosidekick: Runtime security events -> Slack / ECK
 Trivy: Vulnerability / Config / Compliance reports
 APM: Pixie to start, add elastic APM for more detail (Requires app instrumentation)
+Load Testing: K6
