@@ -4,6 +4,8 @@ metadata:
   name: http-nginx
   namespace: nginx-staging
 spec:
+  hostnames:
+  - nginx.example.com  # Set via DNS to cilium gateway IP or App gateway IP
   parentRefs:
   - name: cil-gateway
     namespace: nginx-staging
@@ -11,11 +13,3 @@ spec:
   - backendRefs:
     - name: nginx-service
       port: 8083
-  # - matches:
-  #   - path:
-  #       type: PathPrefix
-  #       value: /b
-  #   backendRefs:
-  #   - name: apache-service
-  #     port: 8083
-      
