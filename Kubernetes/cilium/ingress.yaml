@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-ingress
+  namespace: nginx-staging
+spec:
+  ingressClassName: cilium
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: nginx-service
+            port:
+              number: 8083
+        path: /nginx
+        pathType: Prefix
+      - backend:
+          service:
+            name: apache-service
+            port:
+              number: 8083
+        path: /
+        pathType: Prefix
