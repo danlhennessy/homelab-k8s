@@ -9,3 +9,6 @@ or
 
 https://learn.microsoft.com/en-gb/azure/aks/use-byo-cni?tabs=azure-cli + manually install Cilium (High overheads)
 
+or
+
+AKS + kubenet + nginx/traefik

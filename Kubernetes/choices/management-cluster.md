@@ -1,4 +1,4 @@
-Create a temp cluster manually (minikube, kind, docker etc)
+Create a temp cluster manually (minikube, kind, rancher-desktop etc)
 
 Install Crossplane and kubectl a cloud cluster (AKS/GKE/EKS)
 
