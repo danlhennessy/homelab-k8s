@@ -32,4 +32,3 @@ spec:
           namespace: default
     tags:
       Environment: Sandbox
-    
