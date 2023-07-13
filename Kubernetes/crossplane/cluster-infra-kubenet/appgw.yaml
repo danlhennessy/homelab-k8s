@@ -1,10 +1,8 @@
 apiVersion: network.azure.upbound.io/v1beta1
 kind: ApplicationGateway
 metadata:
-  annotations:
-    aks-cluster-label: ok
   labels:
-    testing.upbound.io/example-name: network
+    aks-cluster-label: ok
   name: wafappgateway
 spec:
   forProvider:
@@ -31,15 +29,18 @@ spec:
           matchLabels:
             appgw-subnet: ok
     httpListener:
-      - frontendIpConfigurationName: ListenerIPConfig
-        frontendPortName: ListenerPort
+      - frontendIpConfigurationName: FrontendIPConfig
+        frontendPortName: FrontendPort
         name: HTTPListener
         protocol: Https
-        sslCertificateName: AppgwCert
+        sslCertificateName: pfx-certificate
     location: UK South
     requestRoutingRule:
-      - httpListenerName: HTTPListener
+      - backendAddressPoolName: BackendPool
+        backendHttpSettingsName: HTTPBackend
+        httpListenerName: HTTPListener
         name: RoutingRule
+        priority: 1
         ruleType: Basic
     resourceGroupNameSelector:
       matchLabels:
@@ -54,6 +55,10 @@ spec:
           name: pfx-cert
           namespace: default
         name: pfx-certificate
+        passwordSecretRef:
+          key: cert-pass
+          name: pfx-cert
+          namespace: default
     wafConfiguration:
       - enabled: true
         firewallMode: Detection

@@ -16,8 +16,6 @@ spec:
           matchLabels:
             aks-subnet: ok
     dnsPrefix: sandboxcluster
-    ingressApplicationGateway:
-      - gatewayId: wafappgateway
     location: UK South
     networkProfile:
       - dnsServiceIp: '10.96.0.10'
