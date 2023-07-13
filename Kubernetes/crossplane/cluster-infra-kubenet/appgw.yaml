@@ -12,13 +12,13 @@ spec:
       - name: BackendPool
     backendHttpSettings:
       - cookieBasedAffinity: Disabled
+        hostName: i.danlhennessy.com
         name: HTTPBackend
         port: 443
         protocol: Https
         requestTimeout: 60
     frontendIpConfiguration:
-      - hostName: i.danlhennessy.com
-        name: FrontendIPConfig
+      - name: FrontendIPConfig
         publicIpAddressIdSelector:
           matchLabels:
             appgw-pubIP: ok
@@ -37,7 +37,7 @@ spec:
         protocol: Https
         sslCertificateName: AppgwCert
     location: UK South
-    requestRooutingRule:
+    requestRoutingRule:
       - httpListenerName: HTTPListener
         name: RoutingRule
         ruleType: Basic
@@ -50,11 +50,11 @@ spec:
         tier: WAF_v2
     sslCertificate:
       - dataSecretRef:
-        - key: certificate
+          key: certificate
           name: pfx-cert
           namespace: default
         name: pfx-certificate
     wafConfiguration:
       - enabled: true
         firewallMode: Detection
-        ruleSetVersion: 3.1
+        ruleSetVersion: "3.1"

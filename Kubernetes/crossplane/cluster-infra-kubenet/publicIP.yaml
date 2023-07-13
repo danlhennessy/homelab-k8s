@@ -4,7 +4,7 @@ metadata:
   labels:
     aks-cluster-label: ok
     appgw-pubIP: ok
-  name: AppgwPublicIP
+  name: appgwpublicip
 spec:
   forProvider:
     allocationMethod: Static
