@@ -1,0 +1,15 @@
+apiVersion: network.azure.upbound.io/v1beta1
+kind: PublicIP
+metadata:
+  labels:
+    aks-cluster-label: ok
+    appgw-pubIP: ok
+  name: AppgwPublicIP
+spec:
+  forProvider:
+    allocationMethod: Static
+    location: UK South
+    resourceGroupNameSelector:
+      matchLabels:
+        aks-cluster-label: ok
+    sku: Standard

@@ -1,0 +1,60 @@
+apiVersion: network.azure.upbound.io/v1beta1
+kind: ApplicationGateway
+metadata:
+  annotations:
+    aks-cluster-label: ok
+  labels:
+    testing.upbound.io/example-name: network
+  name: wafappgateway
+spec:
+  forProvider:
+    backendAddressPool:
+      - name: BackendPool
+    backendHttpSettings:
+      - cookieBasedAffinity: Disabled
+        name: HTTPBackend
+        port: 443
+        protocol: Https
+        requestTimeout: 60
+    frontendIpConfiguration:
+      - hostName: i.danlhennessy.com
+        name: FrontendIPConfig
+        publicIpAddressIdSelector:
+          matchLabels:
+            appgw-pubIP: ok
+    frontendPort:
+      - name: FrontendPort
+        port: 443
+    gatewayIpConfiguration:
+      - name: GatewayIPConfig
+        subnetIdSelector:
+          matchLabels:
+            appgw-subnet: ok
+    httpListener:
+      - frontendIpConfigurationName: ListenerIPConfig
+        frontendPortName: ListenerPort
+        name: HTTPListener
+        protocol: Https
+        sslCertificateName: AppgwCert
+    location: UK South
+    requestRooutingRule:
+      - httpListenerName: HTTPListener
+        name: RoutingRule
+        ruleType: Basic
+    resourceGroupNameSelector:
+      matchLabels:
+        aks-cluster-label: ok
+    sku:
+      - capacity: 1
+        name: WAF_v2
+        tier: WAF_v2
+    sslCertificate:
+      - dataSecretRef:
+        - key: certificate
+          name: pfx-cert
+          namespace: default
+        name: pfx-certificate
+    wafConfiguration:
+      - enabled: true
+        firewallMode: Detection
+        ruleSetVersion: 3.1
