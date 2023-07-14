@@ -13,10 +13,3 @@ Role bindings like a kubernetes role e.g. admin to an Azure AD group
 
 # Service accounts
 Only for services / apps
-
-# Secrets
-Kubernetes secrets  (Move to cloud managed secrets solution when decided)
-
-# Environment variables
-Config Maps:
-    data field for utf-8 strings , binaryData for base64-encoded strings
