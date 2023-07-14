@@ -21,6 +21,7 @@
 
 Pre image update:
 - docker compose / docker run for pure local
+- Okteto / DevSpace synced with local or AKS cluster
 
 Dev test:
 Build docker image locally using docker compose --build or docker build.
