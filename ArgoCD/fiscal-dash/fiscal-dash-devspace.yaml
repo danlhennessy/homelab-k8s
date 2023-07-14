@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fiscal-dash
+spec:
+  destination:
+    name: ''
+    namespace: fiscal-devspace
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kubernetes/app/devspace
+    repoURL: 'https://github.com/danlhennessy/fiscal-dash'
+    targetRevision: master
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

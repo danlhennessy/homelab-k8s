@@ -20,8 +20,8 @@
 # Dev Environment:
 
 Pre image update:
-- docker compose / docker run for pure local
-- Okteto / DevSpace synced with local or AKS cluster
+- docker compose / docker run for pure local. Docker compose -> kompose -> k8s manifests
+- DevSpace synced with local or AKS cluster
 
 Dev test:
 Build docker image locally using docker compose --build or docker build.
