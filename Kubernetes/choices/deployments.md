@@ -21,7 +21,7 @@
 
 Pre image update:
 - docker compose / docker run for pure local. Docker compose -> kompose -> k8s manifests
-- DevSpace synced with local or AKS cluster
+- DevSpace synced with local or AKS cluster (1 devspace session per namespace). devspace dev deploys pod to namespace and devspace purge tears down
 
 Dev test:
 Build docker image locally using docker compose --build or docker build.
