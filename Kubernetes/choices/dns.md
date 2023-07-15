@@ -10,3 +10,5 @@ Internal: https://kubernetes.io/docs/concepts/services-networking/dns-pod-servic
     Relative DNS names can be used e.g.:
         To query a service in the same namespace: curl my-svc:port
         To query a service in another namespace: curl my-svc.namespace:port
+
+DNS cache: https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/

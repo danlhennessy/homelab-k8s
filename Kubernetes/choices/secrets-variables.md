@@ -23,3 +23,7 @@ apiVersion: v1
 # Environment variables
 Config Maps:
     data field for utf-8 strings , binaryData for base64-encoded strings
+
+
+# Secrets Provider
+Azure Key Vault, Hashicorp Vault?
