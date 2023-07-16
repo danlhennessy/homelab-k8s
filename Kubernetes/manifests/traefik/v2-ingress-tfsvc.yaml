@@ -1,0 +1,29 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: TraefikService
+metadata:
+  name: wrr-caddies
+spec:
+  weighted:
+    services:
+      - name: nginx-service
+        weight: 1
+        port: 8083
+      - name: apache-service
+        weight: 1
+        port: 8083
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroute-weighted
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Path(`/`)
+      kind: Rule
+      services:
+        - name: wrr-caddies
+          kind: TraefikService

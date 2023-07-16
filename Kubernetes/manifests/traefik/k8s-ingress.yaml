@@ -1,11 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx-ingress
+  name: minimal-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
   rules:
   - http:
       paths:
@@ -14,5 +12,12 @@ spec:
         backend:
           service:
             name: nginx-service
+            port:
+              number: 8083
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: apache-service
             port:
               number: 8083
