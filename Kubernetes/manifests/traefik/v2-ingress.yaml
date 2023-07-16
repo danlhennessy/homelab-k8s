@@ -1,0 +1,25 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: http-redirect-ingressroute
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/admin`)
+      kind: Rule
+      services:
+        - name: nginx-service
+          port: 8083
+      middlewares:
+        - name: admin-stripprefix
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: admin-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /admin
