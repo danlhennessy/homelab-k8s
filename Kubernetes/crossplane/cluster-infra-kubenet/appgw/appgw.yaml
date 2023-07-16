@@ -10,7 +10,7 @@ spec:
       - name: BackendPool
     backendHttpSettings:
       - cookieBasedAffinity: Disabled
-        hostName: i.danlhennessy.com
+        hostName: "*.ingress.danlhennessy.com"
         name: HTTPBackend
         port: 443
         protocol: Https

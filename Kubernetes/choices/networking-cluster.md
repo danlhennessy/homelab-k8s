@@ -12,3 +12,9 @@ https://learn.microsoft.com/en-gb/azure/aks/use-byo-cni?tabs=azure-cli + manuall
 or
 
 AKS + kubenet + nginx/traefik
+
+# API Traffic
+Public/Private cluster w/ API Integration https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/public-and-private-aks-clusters-demystified/ba-p/3716838
+
+# Egress
+NetworkPolicies
