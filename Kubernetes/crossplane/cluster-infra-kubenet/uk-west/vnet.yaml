@@ -1,0 +1,14 @@
+apiVersion: network.azure.upbound.io/v1beta1
+kind: VirtualNetwork
+metadata:
+  name: crossplane-aks-vnet-west
+  labels:
+    aks-cluster-west-label: ok
+spec:
+  forProvider:
+    addressSpace:
+      - 10.0.0.0/16
+    location: "UK West"
+    resourceGroupNameSelector:
+      matchLabels:
+        aks-cluster-west-label: ok

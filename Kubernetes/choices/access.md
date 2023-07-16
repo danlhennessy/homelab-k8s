@@ -1,4 +1,5 @@
 ## User
+    Azure AD Authentication + Kubernetes RBAC - Azure AD Groups linked to Kubernetes Roles
 
     # Authentication
     az aks get-credentials --resource-group RG --name NAME

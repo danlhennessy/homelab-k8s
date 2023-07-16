@@ -1,0 +1,34 @@
+apiVersion: containerservice.azure.upbound.io/v1beta1
+kind: KubernetesCluster
+metadata:
+  labels:
+    aks-cluster-west-label: ok
+  name: sandboxcluster-west
+spec:
+  forProvider:
+    defaultNodePool:
+      - name: default
+        nodeCount: 2
+        osDiskSizeGb: 30
+        temporaryNameForRotation: temp
+        vmSize: Standard_B2ms
+        vnetSubnetIdSelector:
+          matchLabels:
+            aks-subnet-west: ok
+    dnsPrefix: sandboxcluster-west
+    location: UK West
+    networkProfile:
+      - dnsServiceIp: '10.96.0.10'
+        networkPlugin: kubenet
+        serviceCidr: 10.96.0.0/16
+    resourceGroupNameSelector:
+      matchLabels:
+        aks-cluster-west-label: ok
+    servicePrincipal:
+      - clientId: 5b7e329a-2cf9-46ab-85ca-a2bd50f088de
+        clientSecretSecretRef:
+          key: clientSecret
+          name: sv-principal
+          namespace: default
+    tags:
+      Environment: Sandbox

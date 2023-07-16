@@ -1,5 +1,5 @@
 External:
-    Just one wildcard DNS record to Application gateway (e.g. *.gate.example.com). Based on the prefix, Ingress will route the request to the relevant service
+    Just one wildcard DNS record to Traffic Manager (e.g. *.gate.example.com). Based on the prefix, Ingress will route the request to the relevant service
 
 Internal: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/
     Pods and Services are assigned DNS names by kube-dns(CoreDNS)

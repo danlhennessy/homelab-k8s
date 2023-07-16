@@ -1,7 +1,11 @@
 Current storage location: Azure - velero-backups
 
 # Create Backup
+velero backup create all-namespaces-backup
+
 velero backup create default-namespace-backup --include-namespaces default
+
+velero backup create workload-namespaces-backup --exclude-namespaces kube-system
 
 velero backup logs default-namespace-backup
 

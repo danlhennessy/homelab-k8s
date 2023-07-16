@@ -1,0 +1,17 @@
+apiVersion: network.azure.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  labels:
+    aks-cluster-west-label: ok
+    aks-subnet-west: ok
+  name: aks-subnet-west
+spec:
+  forProvider:
+    addressPrefixes:
+      - 10.0.1.0/24
+    resourceGroupNameSelector:
+      matchLabels:
+        aks-cluster-west-label: ok
+    virtualNetworkNameSelector:
+      matchLabels:
+        aks-cluster-west-label: ok
