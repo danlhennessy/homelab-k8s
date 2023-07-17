@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-ingress
+  name: nginx-ingress
 spec:
   destination:
     name: ''
-    namespace: default
+    namespace: nginx-ingress
     server: 'https://kubernetes.default.svc'
   source:
-    path: Kubernetes/service-mesh/ingress
+    path: Kubernetes/manifests/nginx-basic/ingress/controller
     repoURL: 'https://github.com/danlhennessy/homelab-k8s'
     targetRevision: HEAD
   sources: []
