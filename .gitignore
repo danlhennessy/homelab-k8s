@@ -295,3 +295,5 @@ Kubernetes/dns+ingress/ingress-controller/contour/setup.md
 Kubernetes/dns+ingress/setup.md
 ArgoCD/datree.yaml
 ArgoCD/policy/datree.yaml
+Kubernetes/manifests/akeyless/values.yaml
+Kubernetes/manifests/akeyless/values/values.yaml

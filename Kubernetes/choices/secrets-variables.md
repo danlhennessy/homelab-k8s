@@ -26,8 +26,6 @@ Config Maps:
 
 
 # Secrets Provider
-Azure Key Vault, Hashicorp Vault
-External Secrets - k8s secrets operator https://external-secrets.io/v0.8.5/
-  Uses 2 types of CRDs:
-  - SecretStores/ClusterSecretStores: Defines which external provider to access and containers access creds.
-  - ExternalSecret: Defines which data to retrieve from external provider and where to store the secret resource in Kubernetes.
+Akeyless free tier:
+  Annotations - Secrets are injected on pod init. Restart pod / redeploy to get updated secret.
+  Sidecar mode if automatic secret updating in running pods is required
