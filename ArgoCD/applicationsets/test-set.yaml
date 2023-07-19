@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: test-set
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/danlhennessy/homelab-k8s.git
+      revision: HEAD
+      directories:
+      - path: ArgoCD/troubleshooters/*
+      - path: ArgoCD/security/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: "test-project"
+      source:
+        repoURL: https://github.com/danlhennessy/homelab-k8s.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
