@@ -9,8 +9,7 @@ spec:
       repoURL: https://github.com/danlhennessy/homelab-k8s.git
       revision: HEAD
       directories:
-      - path: Kubernetes/manifests/netshoot/
-      - path: Kubernetes/manifests/apache/
+      - path: Kubernetes/manifests/appset/*
   template:
     metadata:
       name: '{{path.basename}}'
