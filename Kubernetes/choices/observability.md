@@ -3,4 +3,4 @@ Prom + Grafana + custom dashes - https://github.com/dotdc/grafana-dashboards-kub
 Falcosidekick: Runtime security events -> Slack / ECK
 Trivy: Vulnerability / Config / Compliance reports
 APM: Pixie to start, add elastic APM for more detail (Requires app instrumentation)
-Logs: ECK
+Logs: ECK (Fluentbit optional)
