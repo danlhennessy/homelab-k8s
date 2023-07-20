@@ -1,23 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: test-set
+  name: cluster-addons
   namespace: argocd
 spec:
   generators:
   - git:
-      repoURL: https://github.com/danlhennessy/homelab-k8s.git
+      repoURL: https://github.com/argoproj/argo-cd.git
       revision: HEAD
       directories:
-      - path: Kubernetes/manifests/netshoot/
-      - path: Kubernetes/manifests/apache/
+      - path: applicationset/examples/git-generator-directory/cluster-addons/*
   template:
     metadata:
       name: '{{path.basename}}'
     spec:
       project: default
       source:
-        repoURL: https://github.com/danlhennessy/homelab-k8s.git
+        repoURL: https://github.com/argoproj/argo-cd.git
         targetRevision: HEAD
         path: '{{path}}'
       destination:
