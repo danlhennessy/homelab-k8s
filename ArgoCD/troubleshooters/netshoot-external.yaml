@@ -4,9 +4,9 @@ metadata:
   name: netshoot
 spec:
   destination:
-    name: ''
+    name: 'sandboxcluster'
     namespace: default
-    server: 'https://kubernetes.default.svc'
+    server: ''
   source:
     path: Kubernetes/manifests/netshoot
     repoURL: 'https://github.com/danlhennessy/homelab-k8s'
