@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-git
+spec:
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: https://github.com/danlhennessy/homelab-k8s.git
+              revision: HEAD
+              directories:
+                - path: Kubernetes/manifests/appset/*
+          - clusters:
+              selector:
+                matchLabels:
+                  cluster-type: aks
+  template:
+    metadata:
+      name: '{{path.basename}}-{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/danlhennessy/homelab-k8s.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: '{{server}}'
+        namespace: '{{path.basename}}'
