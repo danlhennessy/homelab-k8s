@@ -1,7 +1,7 @@
-Install: See argoCD
+Install: See argoCD - policy
 
 Dashboard at https://app.datree.io
 
 Used in Github Actions CI to scan manifests
 
-And actively runs on cluster to monitor created resources for policy compliance
+And actively runs on cluster to monitor created resources for policy compliance (Scans hourly by default)
