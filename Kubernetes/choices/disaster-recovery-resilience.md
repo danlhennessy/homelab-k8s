@@ -22,7 +22,7 @@ Example livenessprobes:
       initialDelaySeconds: 3
       periodSeconds: 3
 
-Pod anti-affinity - spread newly scheduled pods across nodes to improve resilience. Example of required and prefferedd affinities:
+Pod anti-affinity - spread newly scheduled pods across nodes to improve resilience. Example of required and preferred affinities:
 
 apiVersion: v1
 kind: Pod

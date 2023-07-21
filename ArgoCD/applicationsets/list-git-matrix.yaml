@@ -1,0 +1,36 @@
+#
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: list-git
+  namespace: argocd
+spec:
+  generators:
+  - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/argoproj/argo-cd.git
+          revision: HEAD
+          directories:
+          - path: applicationset/examples/matrix/cluster-addons/*
+      - list:
+          elements:
+          - cluster: sandboxcluster
+            url: https://server-url:443
+          - cluster: sandboxcluster-west
+            url: https://server2-url:443
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/argoproj/argo-cd.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: '{{url}}'
+        namespace: '{{path.basename}}'
+      syncPolicy:
+          syncOptions:
+          - CreateNamespace=true

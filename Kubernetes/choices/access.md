@@ -12,6 +12,8 @@ KUBECONFIG env variable can hold a list of kubeconfig files, kubectl will merge 
 Apps or Services will use service accounts to authenticate with the API server. Most apps will not need this, but anything that needs to integrate with the cluster will, like a CI/CD tool that sends a GET request to the API server or job that runs kubectl commands.
 When running kubectl from within a pod, kubectl runs against the namespace of the pods serviceaccount.
 
+# API Server
+Azure managed endpoint, access controlled via Azure AD for users. For workloads uses serviceaccounts + managed identity/service principal to authenticate
 
 ## User
     Azure AD Authentication + Kubernetes RBAC - Azure AD Groups linked to Kubernetes Roles

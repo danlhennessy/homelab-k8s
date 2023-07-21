@@ -18,3 +18,6 @@ Health probes enabled
 Cheaper, Simpler
 Endpoint type = external endpoint
 In testing - all requests go to working endpoint whereas Front Door still routed some to broken endpoint
+
+# NSGs:
+NSG at aks-subnet = no ingress. Allow only from my src IP, open up as needed.
