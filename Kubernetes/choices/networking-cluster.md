@@ -16,5 +16,5 @@ AKS + kubenet + nginx/traefik
 # API Traffic
 Start with default - Optional move to API Integration: https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/public-and-private-aks-clusters-demystified/ba-p/3716838
 
-# Egress
+# Egress + East to West(Pod/Service to Pod/Service) network control
 NetworkPolicies
