@@ -16,3 +16,10 @@ spec:
       - name: busybox-container
         image: busybox
         command: ["sleep", "infinity"]
+        livenessProbe:
+          exec:
+            command:
+            - "pgrep"
+            - "test-process"
+          initialDelaySeconds: 5
+          periodSeconds: 10
