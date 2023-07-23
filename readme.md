@@ -24,22 +24,28 @@
     </tr>
     <tr>
         <td>Container Network Interface</td>
-        <td><img width="96" src="images/logos/flannel.png"></td>
-        <td><a href="https://github.com/flannel-io/flannel">Flannel</a></td>
-        <td>Pod network add-on, enables cluster DNS</td>
+        <td><img width="96" src="images/logos/ebpf.png"></td>
+        <td><a href="https://cilium.io/use-cases/cni/">Cilium CNI</a></td>
+        <td>eBPF focussed container networking dataplane</td>
     </tr>
     <tr>
-        <td rowspan="4">Deployment Automation</td>
-        <td>CI</td>
+        <td rowspan="5">Deployment Automation</td>
+        <td>Continuous Integration</td>
         <td><img width="96" src="images/logos/githubactions.png"></td>
         <td><a href=https://github.com/features/actions>Github Actions</a></td>
         <td>Continuous Integration - unpacked and packed testing</td>
     </tr>
     <tr>
-        <td>CD</td>
+        <td>Continuous Delivery</td>
+        <td><img width="96" src="images/logos/devspace.avif"></td>
+        <td><a href="https://www.devspace.sh/">Devspace</a></td>
+        <td>Local dev environments synced with temporary dev/staging clusters</td>
+    </tr>
+    <tr>
+        <td>Continuous Deployment</td>
         <td><img width="96" src="images/logos/argo.svg"></td>
-        <td><a href="https://argoproj.github.io/cd">ArgoCD + Rollouts</a></td>
-        <td>Continuous Delivery and Deployment - Git synchronised with cluster environments. Canary rollouts</td>
+        <td><a href="https://argoproj.github.io/cd">ArgoCD, Workflows + Rollouts</a></td>
+        <td>GitOps based deployments to multiple clusters with ApplicationSets and Canary rollouts</td>
     </tr>
     <tr>
         <td>Infrastructure Provisioning</td>
@@ -69,15 +75,15 @@
     <tr>
         <td rowspan="2">Networking</td>
         <td>Service Mesh</td>
-        <td><img width="96" src="images/logos/istio.png"></td>
-        <td><a href="https://istio.io/">Istio</a></td>
-        <td>Cluster networking management and observability</td>
+        <td><img width="96" src="images/logos/cilium.png"></td>
+        <td><a href="https://cilium.io/use-cases/service-mesh/">Cilium Service Mesh</a></td>
+        <td>Sidecarless mesh with Gateway API support</td>
     </tr>
     <tr>
         <td>Health and Topology</td>
-        <td><img width="96" src="images/logos/kiali.svg"></td>
-        <td><a href="https://kiali.io/">Kiali</a></td>
-        <td>Istio add on to monitor service communication and availability</td>
+        <td><img width="124" src="images/logos/hubble.png"></td>
+        <td><a href="https://github.com/cilium/hubble">Hubble</a></td>
+        <td>Network observability designed to work on top of Cilium dataplane</td>
     </tr>
     <tr>
         <td rowspan="3">Security</td>
@@ -101,9 +107,9 @@
     <tr>
         <td rowspan="2">Policy Enforcement</td>
         <td>Policy Engine</td>
-        <td><img width="96" src="images/logos/opa.png"></td>
-        <td><a href="https://www.openpolicyagent.org/">Open Policy Agent</a></td>
-        <td>Policy-based control - manages and evaluates policies against incoming requests and configuration changes</td>
+        <td><img width="96" src="images/logos/kyverno.png"></td>
+        <td><a href="https://kyverno.io">Kyverno</a></td>
+        <td>Policy-based control - pre deploy compliance and runtime mutations</td>
     </tr>
     <tr>
         <td>Manifest Validation</td>
@@ -131,10 +137,10 @@
         <td>Application Performance Monitoring - integrated with ECK service</td>
     </tr>
     <tr>
-        <td>Troubleshooting</td>
-        <td><img width="96" src="images/logos/komodor.png"></td>
-        <td><a href="https://komodor.com/">Komodor</a></td>
-        <td>Cluster troubleshooting platform - health monitoring and automated root cause detection</td>
+        <td>Cluster Health</td>
+        <td><img width="96" src="images/logos/Pixie.png"></td>
+        <td><a href="https://px.dev/">Pixie</a></td>
+        <td>Multifunctional monitoring: metrics, request tracing, pod resource utilisation, node health</td>
     </tr>
     <!-- Add more rows for other tools -->
 </table>

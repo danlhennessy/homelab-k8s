@@ -20,6 +20,6 @@ spec:
           exec:
             command:
             - "pgrep"
-            - "test-process"
+            - "sleep"
           initialDelaySeconds: 5
           periodSeconds: 10
