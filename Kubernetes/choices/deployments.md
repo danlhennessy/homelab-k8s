@@ -23,14 +23,15 @@ Pre image update:
 - docker compose / docker run for pure local. Docker compose -> kompose -> k8s manifests
 - DevSpace synced with local or AKS cluster (1 devspace session per namespace). devspace dev deploys pod to namespace and devspace purge tears down
 
-Dev test:
+ArgoCD syncs to Dev Cluster in their namespace.
+How to deal with multiple tests at once  - multiple namespaces + devspace.yaml files:
+
+`Running devspace dev multiple times in parallel for the same project does not work and returns a fatal error because multiple instances of port forwarding and file sync will disturb each other. However, running devspace dev for several different projects (i.e. 2 different devspace.yaml files with different name) works seamlessly.`
+
+# Dev test:
 Build docker image locally using docker compose --build or docker build.
 Push image to container registry
 Update development branch with that image tag (Multiple dev branches per team if needed)
-
-ArgoCD syncs to Dev Cluster in their namespace.
-How to deal with multiple tests at once  - service routing?
-
 # Post Deploy Monitoring/Alerting/Security
 
 Pixie: Network flow - DNS requests/TCP drops + retransits, HTTP latency, DB query latency, Node/Pod resource usage
