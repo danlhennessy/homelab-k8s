@@ -6,7 +6,7 @@
 
 2. dev app manifests in repo dev branch. Prod/Staging app manifests in repo master branch. Test on dev branch , until ready to PR and merge dev into master. CI for manifests: Datree scan
 
-3. ArgoCD monitors repos and when app manifests are updated, it will sync the relevant namespace/cluster: Dev, Staging and Prod Namespaces
+3. ArgoCD monitors repos and when app manifests are updated, it will sync the relevant namespace/cluster: Dev, Staging and Prod Namespaces. Manifest ordered release: bootstrap -> CRDs -> config -> applications
    Argo Workflows triggered as a result of ArgoCD syncs - PreSync / Sync / PostSync / SyncFailed Hooks. Workflows runs specific and general checks
    PreSync Kyverno, PostSync Trivy / Datree / Falco
 4. After merge to master - staging will build automatically, run tests/scans and send alerts using argo workflows.
