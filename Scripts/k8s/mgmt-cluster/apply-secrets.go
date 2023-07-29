@@ -57,6 +57,21 @@ func Apply_String_Secret(namespace string, secretName string, key string, value 
 	fmt.Println("Kubernetes secret created successfully.")
 }
 
+func Apply_Multi_String_Secret(namespace, secretName string, secretData map[string]string) {
+	data := make(map[string][]byte)
+	for key, value := range secretData {
+		data[key] = []byte(value)
+	}
+
+	err := CreateKubernetesSecret(namespace, secretName, data)
+	if err != nil {
+		fmt.Println("Error creating Kubernetes secret:", err)
+		return
+	}
+
+	fmt.Println("Kubernetes secret created successfully.")
+}
+
 func Apply_JSON_Secret(namespace string, secretName string, value string) {
 
 	// Convert the JSON string to a map[string]string

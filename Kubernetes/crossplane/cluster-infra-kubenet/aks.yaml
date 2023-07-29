@@ -27,7 +27,7 @@ spec:
     servicePrincipal:
       - clientId: 5b7e329a-2cf9-46ab-85ca-a2bd50f088de
         clientSecretSecretRef:
-          key: clientSecret
+          key: aks-clientSecret
           name: sv-principal
           namespace: default
     tags:

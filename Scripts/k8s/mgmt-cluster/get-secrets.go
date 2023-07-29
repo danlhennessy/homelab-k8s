@@ -37,3 +37,35 @@ func Get_Secret(mySecretName string) (string, error) {
 
 	return *resp.Value, nil
 }
+
+func Get_Secrets(mySecretNames []string) (map[string]string, error) {
+	vaultURI := os.Getenv("AZURE_KEY_VAULT_URI")
+
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		return nil, fmt.Errorf("failed to obtain a credential: %v", err)
+	}
+
+	client, err := azsecrets.NewClient(vaultURI, cred, nil)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create Key Vault client: %v", err)
+	}
+
+	// Initialize a map to store the secret values
+	secretValues := make(map[string]string)
+
+	// Iterate through the provided secret names
+	for _, secretName := range mySecretNames {
+		// Get a secret. An empty string version gets the latest version of the secret.
+		version := ""
+		resp, err := client.GetSecret(context.Background(), secretName, version, nil)
+		if err != nil {
+			return nil, fmt.Errorf("failed to get the secret '%s': %v", secretName, err)
+		}
+
+		// Add the secret value to the map
+		secretValues[secretName] = *resp.Value
+	}
+
+	return secretValues, nil
+}
