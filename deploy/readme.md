@@ -1,3 +1,3 @@
 # Steps to deploy management and workload clusters
 
-## Management cluster bootstrap
+## 1 - Management cluster bootstrap
