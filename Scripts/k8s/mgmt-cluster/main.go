@@ -20,9 +20,6 @@ func main() {
 
 	Apply_Manifests("default", []string{
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/Kubernetes/crossplane/*.yaml",
-	})
-
-	Apply_Manifests("default", []string{
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/ArgoCD/argocd-stable.yaml",
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/ArgoCD/applicationsets/cluster-git-matrix.yaml",
 	})
