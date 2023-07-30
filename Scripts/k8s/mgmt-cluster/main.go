@@ -27,7 +27,7 @@ func main() {
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/ArgoCD/argocd-stable.yaml",
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/ArgoCD/applicationsets/cluster-git-matrix.yaml",
 	})
-
+	// CRDs take ~ 40s to install
 	fmt.Println("Waiting for CRDs.....")
 	time.Sleep(60 * time.Second)
 	fmt.Println("Continuing.....")
@@ -35,9 +35,9 @@ func main() {
 	Apply_Manifests("default", []string{
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/Kubernetes/crossplane/*.yaml",
 	})
-
+	// CRDs take ~ 70s to install
 	fmt.Println("Waiting for CRDs.....")
-	time.Sleep(60 * time.Second)
+	time.Sleep(80 * time.Second)
 	fmt.Println("Continuing.....")
 
 	Apply_Manifests("crossplane-system", []string{
