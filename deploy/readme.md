@@ -5,4 +5,5 @@ az login
 cd Scripts/k8s/mgmt-cluster && export AZURE_KEY_VAULT_URI=(Key Vault URI)
 go run .
 
-## 2 - Configure ArgoCD
+## 2 - Add additional clusters
+
