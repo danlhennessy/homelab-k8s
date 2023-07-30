@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"time"
+)
+
 func main() {
 
 	Create_Namespaces([]string{
@@ -18,17 +23,25 @@ func main() {
 
 	Helm_Install("crossplane", "crossplane-stable/crossplane", "crossplane-system")
 
-	Apply_Manifests("default", []string{
-		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/Kubernetes/crossplane/*.yaml",
-		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/ArgoCD/argocd-stable.yaml",
-		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/ArgoCD/applicationsets/cluster-git-matrix.yaml",
-	})
-
 	Apply_Manifests("argocd", []string{
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/ArgoCD/argocd-stable.yaml",
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/ArgoCD/applicationsets/cluster-git-matrix.yaml",
 	})
+
+	fmt.Println("Waiting for CRDs.....")
+	time.Sleep(60 * time.Second)
+	fmt.Println("Continuing.....")
+
+	Apply_Manifests("default", []string{
+		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/Kubernetes/crossplane/*.yaml",
+	})
+
+	fmt.Println("Waiting for CRDs.....")
+	time.Sleep(60 * time.Second)
+	fmt.Println("Continuing.....")
+
 	Apply_Manifests("crossplane-system", []string{
+		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/Kubernetes/crossplane/az-provider-config/az-providerconfig.yaml",
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/Kubernetes/crossplane/cluster-infra-kubenet/*.yaml",
 		"/media/dan/Transcend9/Backup/Work/DevOps/homelab/Kubernetes/crossplane/cluster-infra-kubenet/uk-west/*.yaml",
 	})
