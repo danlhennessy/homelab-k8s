@@ -37,7 +37,7 @@ func main() {
 	})
 	// CRDs take ~ 70s to install
 	fmt.Println("Waiting for CRDs.....")
-	time.Sleep(80 * time.Second)
+	time.Sleep(90 * time.Second)
 	fmt.Println("Continuing.....")
 
 	Apply_Manifests("crossplane-system", []string{
