@@ -1,1 +1,1 @@
-Private container image registry = ?
+Private container image registry = ACR
