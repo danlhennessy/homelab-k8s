@@ -3,7 +3,11 @@ Chaos Engineering - resiliency testing
 # Resilience
 
 Failover at the service level, not at ingress. Serviceroutes to pods based on health checks. Can add additional custom liveness/readiness probes to apps to take advantage of this.
-- https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+- https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes
+
+Use liveness probes in cases where restarting may help, readiness probes if app receives network traffic but may not be immediately ready to accept.
+https://developers.redhat.com/blog/2020/11/10/you-probably-need-liveness-and-readiness-probes#example_1__a_static_file_server__nginx_ for more detail
+
 Example livenessprobes:
     livenessProbe:
       exec:

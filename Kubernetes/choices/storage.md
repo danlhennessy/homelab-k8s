@@ -1,4 +1,4 @@
-Minio + Rook?
+Ceph + Rook?
 
 ephemeral storage for certain deploys
 
