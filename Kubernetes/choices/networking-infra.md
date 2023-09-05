@@ -16,7 +16,7 @@ Egress: K8s NetworkPolicies OR UDRs at subnet level + Azure Firewall on a Hub su
 Ingress Security:
     - NSG at traffic manager level
     - HTTPS Request ingress (wildcard) TLS cert created by cert-manager if doesnt exist, and traffic forwarded
-    - Ingress is TLS termination point and forwards traffic to workload pods via HTTP
+    - Ingress is TLS termination point and forwards traffic to workload pods via HTTP 
 
 # Front Door
 1 Origin Group
