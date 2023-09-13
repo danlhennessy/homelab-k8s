@@ -10,4 +10,4 @@ Pod:
 # Compute resource - https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
 Containers are burstable by default and will use up to the available compute/memory capacity of the node unless limits/requests are defined in their spec.
 Prefer only requests to limits unless required. https://home.robusta.dev/blog/stop-using-cpu-limits
-KRR can help determine appropriate resource numbers: https://github.com/robusta-dev/krr
+KRR can help determine appropriate resource numbers: https://github.com/robusta-dev/krr - also Goldilocks by Fairwinds https://github.com/FairwindsOps/goldilocks
