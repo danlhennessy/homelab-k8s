@@ -22,7 +22,14 @@
 8. The Rollout is marked as "Degraded" both in ArgoCD and Argo Rollouts.
 9. Argo CD syncs take no further action as the Rollout object in Git is exactly the same as in the cluster. They both mention version N+1
 
-## In Practice
+## In Practice (Builtin K8s Service - Canary)
 
-1. Define Application as an argo rollout resource, pod config goes in spec > template as usual.
-2. 
+1. Define Application as an argo rollout resource, pod config goes in spec > template as usual. Store in git repository
+2. Create application and service / other required resourses as an argoCD application with autosync enabled to git repo.
+3. Update the manifest in git (Usually the image tag but can be any part)
+4. ArgoCD will sync and begin the rollout process, with original manifest as 'stable' and new manifest as 'release'
+5. The controller will progress through the steps defined in the Rollout's update strategy. If using builtin service, rollouts doesn't adjust the way service routes traffic, just the number of replicas from the stable manifest vs the release manifest. So if 5 replicas, *setWeight: 20* means that 1 replica will be on release, and the other 4 on stable.
+6. Watch the rollout progress with: `kubectl argo rollouts get rollout rollout-name --watch`
+7. If a pause is set, the release manifest can be promoted to the next step with `kubectl argo rollouts promote rollout-name`. 
+8. The rollout can also be rolled back at any time `kubectl argo rollouts abort rollout-name` which will adapt all the replicas to use the stable manifest.
+9. When all steps of a rollout are complete, the replicaset will be marked as stable.
