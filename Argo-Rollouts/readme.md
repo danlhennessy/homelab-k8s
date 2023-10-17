@@ -33,3 +33,9 @@
 7. If a pause is set, the release manifest can be promoted to the next step with `kubectl argo rollouts promote rollout-name`. 
 8. The rollout can also be rolled back at any time `kubectl argo rollouts abort rollout-name` which will adapt all the replicas to use the stable manifest.
 9. When all steps of a rollout are complete, the replicaset will be marked as stable.
+
+## In Practice (ingress-nginx - Canary)
+
+
+## Analysis 
+Analysis is the capability to connect a Rollout to your metrics provider and define specific thresholds for certain metrics that will decide if an update is successful or not. For each analysis you can define one or more metric queries along with their expected results. A Rollout will progress on its own if metric queries are good, rollback automatically if metrics show failure and pause the rollout if metrics cannot provide a success/failure answer.
