@@ -21,7 +21,9 @@
 ## Infra Deployment
 Single branch with directories per environment. GitOps deployment for kubernetes resources, Terraform CI/CD pipeline for cloud resources.
 ## App Deployment
-A single Feature branch = a single ephemeral dev cluster, can have multiple, spun down when finished. 1 release branch at a time, synced to staging cluster that stays up, commit to release branch kicks off CI/CD and canary deploy to staging. Release branch must == master except for changes included in current release. Merge release branch to master after testing on staging for CI/CD and canary deploy to prod.
+Dev: A single Feature branch = a single ephemeral dev cluster, can have multiple, spun down when finished.
+Stage: 1 release branch at a time, on PR to master, staging and prod images created from same source code. Deploys to staging cluster that stays up. Release branch must == master except for changes included in current release.
+Prod: Merge release branch PR to master after testing on staging for CI/CD and deploy to prod.
 
 # Dev Environment:
 
